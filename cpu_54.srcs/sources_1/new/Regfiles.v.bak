@@ -1,0 +1,112 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2017/11/27 21:35:56
+// Design Name: 
+// Module Name: Regfiles
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+ module Regfiles(clk_n,rst,we,raddr1,raddr2,waddr,wdata,rdata1,rdata2);
+input clk_n; //寄存器组时钟信号，下降沿写入数据 
+input rst; //reset 信号，异步复位，高电平时全部寄存器置零  
+input we; //寄存器读写有效信号，高电平时允许寄存器写入数据， 低电平时允许寄存器读出数据 
+input [4:0] raddr1; //所需读取的寄存器的地址 
+input [4:0] raddr2; //所需读取的寄存器的地址 
+input [4:0] waddr; //写寄存器的地址 
+input [31:0] wdata; //写寄存器数据，数据在 clk 下降沿时被写入      
+output [31:0] rdata1; //raddr1 所对应寄存器的输出数据 
+output [31:0] rdata2;  //raddr2 所对应寄存器的输出数据 
+wire [31:0] regenable;
+wire [31:0] temp0;
+wire [31:0] temp1;
+wire [31:0] temp2;
+wire [31:0] temp3;
+wire [31:0] temp4;
+wire [31:0] temp5;
+wire [31:0] temp6;
+wire [31:0] temp7;
+wire [31:0] temp8;
+wire [31:0] temp9;
+wire [31:0] temp10;
+wire [31:0] temp11;
+wire [31:0] temp12;
+wire [31:0] temp13;
+wire [31:0] temp14;
+wire [31:0] temp15;
+wire [31:0] temp16;
+wire [31:0] temp17;
+wire [31:0] temp18;
+wire [31:0] temp19;
+wire [31:0] temp20;
+wire [31:0] temp21;
+wire [31:0] temp22;
+wire [31:0] temp23;
+wire [31:0] temp24;
+wire [31:0] temp25;
+wire [31:0] temp26;
+wire [31:0] temp27;
+wire [31:0] temp28;
+wire [31:0] temp29;
+wire [31:0] temp30;
+wire [31:0] temp31;
+wire clk;
+assign clk=~clk_n;
+decoder dmux(waddr,1,we,regenable);
+pcreg p0(clk,rst,regenable[0],wdata,temp0);
+pcreg p1(clk,rst,regenable[1],wdata,temp1);
+pcreg p2(clk,rst,regenable[2],wdata,temp2);
+pcreg p3(clk,rst,regenable[3],wdata,temp3);
+pcreg p4(clk,rst,regenable[4],wdata,temp4);
+pcreg p5(clk,rst,regenable[5],wdata,temp5);
+pcreg p6(clk,rst,regenable[6],wdata,temp6);
+pcreg p7(clk,rst,regenable[7],wdata,temp7);
+pcreg p8(clk,rst,regenable[8],wdata,temp8);
+pcreg p9(clk,rst,regenable[9],wdata,temp9);
+pcreg p10(clk,rst,regenable[10],wdata,temp10);
+pcreg p11(clk,rst,regenable[11],wdata,temp11);
+pcreg p12(clk,rst,regenable[12],wdata,temp12);
+pcreg p13(clk,rst,regenable[13],wdata,temp13);
+pcreg p14(clk,rst,regenable[14],wdata,temp14);
+pcreg p15(clk,rst,regenable[15],wdata,temp15);
+pcreg p16(clk,rst,regenable[16],wdata,temp16);
+pcreg p17(clk,rst,regenable[17],wdata,temp17);
+pcreg p18(clk,rst,regenable[18],wdata,temp18);
+pcreg p19(clk,rst,regenable[19],wdata,temp19);
+pcreg p20(clk,rst,regenable[20],wdata,temp20);
+pcreg p21(clk,rst,regenable[21],wdata,temp21);
+pcreg p22(clk,rst,regenable[22],wdata,temp22);
+pcreg p23(clk,rst,regenable[23],wdata,temp23);
+pcreg p24(clk,rst,regenable[24],wdata,temp24);
+pcreg p25(clk,rst,regenable[25],wdata,temp25);
+pcreg p26(clk,rst,regenable[26],wdata,temp26);
+pcreg p27(clk,rst,regenable[27],wdata,temp27);
+pcreg p28(clk,rst,regenable[28],wdata,temp28);
+pcreg p29(clk,rst,regenable[29],wdata,temp29);
+pcreg p30(clk,rst,regenable[30],wdata,temp30);
+pcreg p31(clk,rst,regenable[31],wdata,temp31);
+mux32 mux(.iC0(temp0),.iC1(temp1),.iC2(temp2),.iC3(temp3),.iC4(temp4),.iC5(temp5),.iC6(temp6),.iC7(temp7),.iC8(temp8),
+.iC9(temp9),.iC10(temp10),.iC11(temp11),.iC12(temp12),.iC13(temp13),.iC14(temp14),.iC15(temp15),.iC16(temp16),.iC17(temp17),
+.iC18(temp18),.iC19(temp19),.iC20(temp20),.iC21(temp21),.iC22(temp22),.iC23(temp23),.iC24(temp24),.iC25(temp25),.iC26(temp26),
+.iC27(temp27),.iC28(temp28),.iC29(temp29),.iC30(temp30),.iC31(temp31),.ena(~ena),.addr(raddr1),.oZ(rdata1));
+mux32 mux1(.iC0(temp0),.iC1(temp1),.iC2(temp2),.iC3(temp3),.iC4(temp4),.iC5(temp5),.iC6(temp6),.iC7(temp7),.iC8(temp8),
+.iC9(temp9),.iC10(temp10),.iC11(temp11),.iC12(temp12),.iC13(temp13),.iC14(temp14),.iC15(temp15),.iC16(temp16),.iC17(temp17),
+.iC18(temp18),.iC19(temp19),.iC20(temp20),.iC21(temp21),.iC22(temp22),.iC23(temp23),.iC24(temp24),.iC25(temp25),.iC26(temp26),
+.iC27(temp27),.iC28(temp28),.iC29(temp29),.iC30(temp30),.iC31(temp31),.ena(~ena),.addr(raddr2),.oZ(rdata2));
+
+
+
+endmodule
